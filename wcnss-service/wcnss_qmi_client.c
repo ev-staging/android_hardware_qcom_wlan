@@ -36,6 +36,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "qmi_client.h"
 #include "device_management_service_v01.h"
 #include <cutils/properties.h>
+#include <string.h>
 
 #define SUCCESS 0
 #define FAILED -1
@@ -68,8 +69,7 @@ static char *dms_find_modem_port( char *prop_value_ptr)
 
 	/* Sanity check */
 	if (prop_value_ptr == NULL) {
-		ALOGE("%s", "NULL prop_value_ptr, using default port",
-			__func__);
+		ALOGE("%s: NULL prop_value_ptr, using default port", __func__);
 		return qmi_modem_port_ptr;
 	}
 
